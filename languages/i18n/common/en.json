@@ -1,0 +1,12 @@
+{
+   "programm_name": "Task Manager",
+   "subtitle": "make your life easier",
+   "titles": {
+      "create_task": "Create task",
+      "change_language": "Change language"
+   },
+   "add_task": "Add task",
+   "save": "Save",
+   "discard": "Discard",
+   "clear": "Crear"
+}

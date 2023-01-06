@@ -1,0 +1,25 @@
+{
+   "save": "Save",
+   "create": "Create",
+   "discard": "Discard",
+   "clear": "Crear",
+   "colors": {
+      "yellow": "yellow",
+      "pink": "pink",
+      "green": "green",
+      "red": "red",
+      "orange": "orange",
+      "blue": "blue"
+   },
+   "create_board": "Create task board",
+   "create_task": "Create task",
+   "create_color": "Choose color label",
+   "board_placeholder": "Name of board...",
+   "task_placeholder": "Your task is...",
+   "validation": {
+      "required": "*Field is required",
+      "long": "*Too long",
+      "short": "*Too short",
+      "string": "*Needs to be a string"
+   }
+}
