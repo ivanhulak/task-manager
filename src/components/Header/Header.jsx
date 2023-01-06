@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from "react-i18next";
 import i18next from 'i18next';
 import avatar from '../../assets/images/ivan.jpg';
+import coockies from 'js-cookie';
 import { AddIcon } from '../common/Icons/AddIcon';
 import { GlobeIcon } from '../common/Icons/GlobeIcon';
 import { InfoIcon } from '../common/Icons/InfoIcon';
@@ -32,28 +33,18 @@ export const Header = ({ createModeCallback }) => {
   const [changeLangMode, setChangeLangMode] = useState(false)
   let menuRef = useRef();
   const { t } = useTranslation(['common']);
-  const [languageCode, setLanguageCode] = useState(localStorage.getItem("i18next"))
+  const [languageCode, setLanguageCode] = useState(coockies.get("i18next") || '')
 
   useEffect(() => {
-    if (languageCode === '') {
-      localStorage.setItem('i18next', 'en')
+    if(languageCode === ''){
+       coockies.set('i18next', 'en')
     }
     // eslint-disable-next-line
-  }, [])
-  useEffect(() => {
-    localStorage.setItem('i18next', languageCode)
-  }, [languageCode])
-  useEffect(() => {
-    let handler = (e) => {
-      if (!menuRef.current.contains(e.target)) {
-        setChangeLangMode(false);
-      }
-    };
-    document.addEventListener("mousedown", handler);
-    return () => {
-      document.removeEventListener("mousedown", handler);
-    }
-  });
+ }, [])
+
+ useEffect(() => {
+    coockies.set('i18next', languageCode)
+ }, [languageCode])
 
   return (
     <div className="header">

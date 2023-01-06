@@ -11,17 +11,16 @@ i18n
       supportedLngs: ['en', 'ukr', 'ru'],
       backend: {
          // translation file path
-         loadPath: '/languages/i18n/{{ns}}/{{lng}}.json',
+         loadPath: '/task-manager/locales/i18n/{{ns}}/{{lng}}.json',
       },
-      fallbackLng: "en",
       detection: {
-         order: ['path', 'htmlTag', 'localStorage', 'cookie', 'subdomain'],
+         order: ['path', 'cookie', 'htmlTag', 'localStorage', 'subdomain'],
          cashes: ['coockie']
       },
       // disable in production
       debug: true,
       // can have multiple namespaces in case you want to devide a huge translation into smaller pieces 
-      ns: ["common"],
+      ns: ["common", "form"],
       interpolation: {
          escapeValue: false,
          formatSeparator: ","
