@@ -1,0 +1,8 @@
+export const LogotypeIcon = () => {
+   return (
+      <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+         <path d="M25 90.0002C16.7157 90.0002 10 83.2845 10 75.0002V24.9998C10 16.7155 16.7157 9.99976 25 9.99976H75C83.2843 9.99976 90 16.7155 90 24.9998L90 75.0002C90 83.2845 83.2843 90.0002 75 90.0002H25Z" stroke="#F2F2F2" strokeWidth="2" strokeLinejoin="round" />
+         <path d="M30 56.6664L53.3333 24.9998V46.6664H70L46.6667 74.9998V56.6664H30Z" stroke="#F2F2F2" strokeWidth="2" strokeLinejoin="round" />
+      </svg>
+   );
+}

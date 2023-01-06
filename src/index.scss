@@ -1,0 +1,80 @@
+html,
+body{
+  height: 100%;
+  margin: 0;
+  line-height: 1;
+  font-family: 'Inconsolata', monospace;
+  background: rgb(131, 116, 216);
+  background: linear-gradient(90deg, rgba(131, 116, 216, 1) 0%, rgba(63, 46, 71, 1) 100%);
+  color: #F2F2F2;
+}
+code {font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;}
+
+.container {
+  max-width: 1260px;
+  margin: 0 auto;
+  padding: 0px 15px;
+}
+
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.content {
+  flex: 1 1 auto;
+  position: relative;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 0px;
+  background: rgba(132, 114, 243, 0.5);
+
+  &__text {
+    font-weight: 500;
+    font-size: 14px;
+    color: #CABAD4;
+  }
+}
+
+.empty{
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  &:hover{
+    span{
+      color: #CABAD4;
+    }
+    svg path{
+      stroke: #CABAD4;
+    }
+  }
+  span{
+    transition: all 0.3s ease;
+    font-weight: 500;
+    font-size: 96px;    
+    text-align: center;
+    letter-spacing: 0.015em;
+    color: #8974A3;
+    margin-right: 10px;
+  }
+  svg{
+    width: 90px;
+    height: 90px;
+    path{
+      transition: all 0.3s ease;
+      stroke: #8974A3;
+    }
+  }
+}

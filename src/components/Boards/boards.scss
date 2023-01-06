@@ -1,0 +1,347 @@
+.boards {
+   margin-bottom: 30px;
+
+   &__body {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding: 0px 20px;
+      margin-top: 20px;
+   }
+
+   &__column {
+      background: #F2F2F2;
+      border: 4px solid #8472F3;
+      box-shadow: 0px 0px 36px #8472F3;
+      border-radius: 42px;
+      transition: all 0.4s ease;
+      width: 340px;
+
+      &:hover {
+         box-shadow: 0px 0px 36px #644dfd;
+      }
+   }
+}
+
+.board-inner {
+   display: flex;
+   flex-direction: column;
+   min-height: 100%;
+
+   &__header {
+      padding: 15px 20px 10px;
+      display: flex;
+      gap: 20px;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 4px solid #8472F3;
+   }
+
+   &__edit {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+
+      &-inputDiv {
+         flex: 0 1 70%;
+      }
+
+      &-input {
+         background-color: #6F58AA;
+         border-radius: 24px;
+         color: #fff;
+         width: 100%;
+         font-size: 18px;
+         padding: 5px 10px;
+         margin-bottom: 5px;
+      }
+
+      &-color {
+         flex: 0 1 25%;
+      }
+
+      &-select {
+         font-size: 16px;
+         padding: 5px;
+         background: #6F58AA;
+         width: 100%;
+         border-radius: 24px;
+         margin-bottom: 5px;
+
+         &::placeholder {
+            color: rgba(202, 186, 212, 0.73);
+         }
+      }
+
+      &-buttons {
+         flex: 0 1 100%;
+         color: #000;
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+      }
+
+      &-button {
+         background-color: #7C53F0;
+         color: #fff;
+         font-size: 18px;
+         border-radius: 16px;
+         padding: 5px 15px;
+         transition: all 0.4s ease;
+
+         &:hover {
+            box-shadow: 0px 0px 20px #8472F3;
+         }
+      }
+   }
+
+   &__title {
+      font-weight: 700;
+      font-size: 32px;
+      color: #8472F3;
+   }
+
+   &__tasks {
+      flex: 1 1 auto;
+      padding: 15px 20px;
+      overflow: scroll;
+      max-height: 300px;
+   }
+
+   &__footer {
+      padding: 10px 20px 15px;
+      display: flex;
+      justify-content: space-between
+   }
+
+   &__add-button {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 2px solid transparent;
+      transition: all 0.3s ease;
+
+      span {
+         color: #CABAD4;
+         font-weight: 500;
+         font-size: 20px;
+      }
+
+      &:hover {
+         border-bottom: 2px solid #CABAD4;
+      }
+   }
+}
+
+.input-error {
+   border: 1px solid #FF0000;
+}
+
+.error-message {
+   margin-top: 0px;
+   font-size: 16px;
+   font-weight: 500;
+   font-style: italic;
+   color: #FF0000;
+}
+
+.board-task {
+   display: flex;
+   justify-content: space-between;
+   background: #CABAD4;
+   border: 1px solid #8472F3;
+   border-radius: 16px;
+   padding: 10px;
+   gap: 10px;
+   color: #000;
+   cursor: grab;
+
+   &:not(:last-child) {
+      margin-bottom: 10px;
+   }
+
+   &__status {
+      flex: 0 1 35px;
+      cursor: pointer;
+   }
+
+   &__edit {
+      border: 2px dotted #aca5b0;
+      padding: 10px;
+      border-radius: 10px;
+
+      &-input {
+         background-color: #6F58AA;
+         border-radius: 24px;
+         color: #fff;
+         width: 100%;
+         font-size: 18px;
+         padding: 5px 10px;
+         margin-bottom: 5px;
+      }
+
+      &-buttons {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+      }
+
+      &-button {
+         background-color: #7C53F0;
+         color: #fff;
+         font-size: 18px;
+         border-radius: 16px;
+         padding: 5px 10px;
+         transition: all 0.4s ease;
+
+         &:hover {
+            box-shadow: 0px 0px 20px #8472F3;
+         }
+      }
+   }
+
+   &__text {
+      flex: 0 1 200px;
+      inline-size: 200px;
+      overflow-wrap: break-word;
+      font-size: 22px;
+   }
+}
+
+.buttons-task {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   min-height: 64px;
+   flex: 0 1 30px;
+
+   &__button {
+      cursor: pointer;
+
+      svg {
+         transition: all 0.5s ease;
+      }
+
+      svg path {
+         transition: all 0.2s ease;
+      }
+
+      &:hover svg {
+         height: 28px;
+         width: 28px;
+      }
+
+      &:hover svg path {
+         stroke: #7C53F0;
+         fill: #7C53F0;
+      }
+   }
+}
+
+// Adaptive Boards
+@media (max-width: 1185px) {
+   .boards {
+      margin-bottom: calc(15px + (30 - 15) * ((100vw - 320px) / (1185 - 320)));
+
+      &__body {
+         gap: 10px;
+         margin-top: calc(15px + (20 - 15) * ((100vw - 320px) / (1185 - 320)));
+      }
+   }
+
+   .board-inner {
+      &__tasks {
+         padding: 10px;
+      }
+
+      &__title {
+         font-size: calc(22px + (32 - 22) * ((100vw - 320px) / (1185 - 320)));
+      }
+
+      &__add-button {
+         span {
+            font-size: calc(16px + (20 - 16) * ((100vw - 320px) / (1185 - 320)));
+         }
+
+         svg {
+            width: calc(18px + (24 - 18) * ((100vw - 320px) / (1185 - 320)));
+            height: calc(18px + (24 - 18) * ((100vw - 320px) / (1185 - 320)));
+         }
+      }
+   }
+
+   .board-task {
+      &__edit {
+         padding-top: calc(5px + (10 - 5) * ((100vw - 320px) / (1185 - 320)));
+         padding-bottom: calc(5px + (10 - 5) * ((100vw - 320px) / (1185 - 320)));
+         padding-right: calc(5px + (10 - 5) * ((100vw - 320px) / (1185 - 320)));
+         padding-left: calc(5px + (10 - 5) * ((100vw - 320px) / (1185 - 320)));
+
+         &-input,
+         &-button {
+            font-size: calc(14px + (18 - 14) * ((100vw - 320px) / (1185 - 320)));
+         }
+      }
+
+
+      &__text {
+         font-size: calc(14px + (22 - 14) * ((100vw - 320px) / (1185 - 320)));
+      }
+
+      &__status {
+         svg {
+            width: calc(20px + (35 - 20) * ((100vw - 320px) / (1185 - 320)));
+            height: calc(20px + (35 - 20) * ((100vw - 320px) / (1185 - 320)));
+         }
+      }
+
+      &__buttons {
+         svg {
+            width: calc(18px + (24 - 18) * ((100vw - 320px) / (1185 - 320)));
+            height: calc(18px + (24 - 18) * ((100vw - 320px) / (1185 - 320)));
+         }
+      }
+   }
+
+   .buttons-task {
+      min-height: calc(36px + (65 - 36) * ((100vw - 320px) / (1185 - 320)));
+   }
+}
+
+@media (max-width: 444px) {
+   .boards {
+      &__column {
+         width: 260px;
+      }
+   }
+
+   .buttons-task {
+      min-height: 50px;
+
+   }
+
+   .board-task {
+      padding: 5px;
+   }
+
+   .board-inner {
+      &__add-button {
+         span {
+            text-align: left;
+            max-width: 100px;
+         }
+      }
+   }
+
+   .board-inner__edit {
+      &-inputDiv {
+         flex: 0 1 60%;
+         font-size: 16px;
+      }
+      &-color{
+         flex: 0 1 35%;
+      }
+   }
+}
