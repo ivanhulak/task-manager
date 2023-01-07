@@ -43,6 +43,7 @@ code {font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', mono
 }
 
 .empty{
+  width: 540px;
   position: absolute;
   top: 50%;
   right: 50%;
@@ -75,6 +76,18 @@ code {font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', mono
     path{
       transition: all 0.3s ease;
       stroke: #8974A3;
+    }
+  }
+}
+@media (max-width: 1110px) {
+  .empty{
+    width: calc(230px + (540 - 230) * ((100vw - 320px) / (1110 - 320)));
+    span{
+      font-size: calc(32px + (96 - 32) * ((100vw - 320px) / (1110 - 320)));
+    }
+    svg{
+      width: calc(36px + (90 - 36) * ((100vw - 320px) / (1110 - 320)));
+      height: calc(36px + (90 - 36) * ((100vw - 320px) / (1110 - 320)));
     }
   }
 }

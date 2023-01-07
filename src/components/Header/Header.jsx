@@ -10,6 +10,7 @@ import { SettingsIcon } from '../common/Icons/SettingsIcon';
 import { LogotypeIcon } from '../common/Icons/LogotypeIcon';
 import './header.scss';
 import '../Boards/MoreToolsMenu/more-tools-menu.scss';
+import { NavLink } from 'react-router-dom';
 
 const languages = [
   {
@@ -60,7 +61,7 @@ export const Header = ({ createModeCallback }) => {
       <div className="header__right">
         <ul className="header__menu menu-header">
           <li title={t("titles.create_task")} className="menu-header__item" onClick={createModeCallback}>
-            <AddIcon />
+            <NavLink to='/'><AddIcon /></NavLink>
           </li>
           <li ref={menuRef} title={t("titles.change_language")} className="menu-header__item" onClick={() => setChangeLangMode(prev => !prev)}>
             <GlobeIcon />
@@ -80,8 +81,8 @@ export const Header = ({ createModeCallback }) => {
               </ul>
             </div>
           </li>
-          <li className="menu-header__item">
-            <InfoIcon />
+          <li className="menu-header__item" title={t("titles.info")}>
+            <NavLink to='/info'><InfoIcon /></NavLink>
           </li>
           <li className="menu-header__item">
             <SettingsIcon />

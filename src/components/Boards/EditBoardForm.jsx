@@ -3,15 +3,17 @@ import { useTranslation } from 'react-i18next';
 import * as Yup from 'yup';
 import './boards.scss';
 
-const EditBoardSchema = Yup.object().shape({
-   board: Yup.string()
-      .typeError('Needs to be a string')
-      .min(2, 'Too Short!')
-      .max(40, 'Too Long!')
-});
 
 export const EditBoardForm = ({ board, editBoardCallback, setEditBoardMode, setCurrentBoard }) => {
    const { t } = useTranslation(['form']);
+
+   const EditBoardSchema = Yup.object().shape({
+      board: Yup.string()
+         .typeError(`${t("validation.string")}`)
+         .min(2, `${t("validation.short")}`)
+         .max(40, `${t("validation.long")}`)
+   });
+   
    const submit = (values, { setSubmitting }) => {
       const formData = {
          title: values.board,
@@ -39,7 +41,7 @@ export const EditBoardForm = ({ board, editBoardCallback, setEditBoardMode, setC
                      onChange={handleChange}
                      className={errors.board ? 'board-inner__edit-input input-error' : 'board-inner__edit-input'}
                   />
-                  {errors.board && <p className='error-message'>{errors.board}</p>}
+                  {errors.board && <p className='board-inner__error-message'>{errors.board}</p>}
                </div>
                <div className='board-inner__edit-color'>
                   <Field as="select" name="colorLabel" className='board-inner__edit-select'>

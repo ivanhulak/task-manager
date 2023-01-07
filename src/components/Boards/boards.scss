@@ -24,7 +24,8 @@
    }
 }
 
-.board-inner {
+.board-inner,
+.task-inner {
    display: flex;
    flex-direction: column;
    min-height: 100%;
@@ -42,6 +43,7 @@
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
+      flex: 0 1 70%;
 
       &-inputDiv {
          flex: 0 1 70%;
@@ -136,18 +138,17 @@
          border-bottom: 2px solid #CABAD4;
       }
    }
+   &__error-message {
+      margin-top: 0px;
+      font-size: 16px;
+      font-weight: 500;
+      font-style: italic;
+      color: #FF0000;
+   }
 }
 
 .input-error {
    border: 1px solid #FF0000;
-}
-
-.error-message {
-   margin-top: 0px;
-   font-size: 16px;
-   font-weight: 500;
-   font-style: italic;
-   color: #FF0000;
 }
 
 .board-task {
@@ -166,7 +167,7 @@
    }
 
    &__status {
-      flex: 0 1 35px;
+      flex: 0 0 35px;
       cursor: pointer;
    }
 
@@ -206,8 +207,8 @@
    }
 
    &__text {
-      flex: 0 1 200px;
-      inline-size: 200px;
+      flex: 0 0 200px;
+      max-width: 70%;
       overflow-wrap: break-word;
       font-size: 22px;
    }
@@ -288,12 +289,12 @@
          }
       }
 
-
       &__text {
          font-size: calc(14px + (22 - 14) * ((100vw - 320px) / (1185 - 320)));
       }
 
       &__status {
+         flex-basis: calc(20px + (35 - 20) * ((100vw - 320px) / (1185 - 320)));
          svg {
             width: calc(20px + (35 - 20) * ((100vw - 320px) / (1185 - 320)));
             height: calc(20px + (35 - 20) * ((100vw - 320px) / (1185 - 320)));

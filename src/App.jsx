@@ -1,13 +1,17 @@
 import { createContext, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Boards } from './components/Boards/Boards';
 import { AddIcon } from './components/common/Icons/AddIcon';
 import { CreateTaskForm } from './components/CreateTaskForm/CreateTaskForm';
 import { Header } from './components/Header/Header';
 import './index.scss';
+import { InfoPage } from './pages/InfoPage/InfoPage';
 
 export const TaskContext = createContext(null);
 
 function App() {
+  const { t } = useTranslation(["common"])
   const [createMode, setCreateMode] = useState(false)
   const [currentBoardId, setCurrentBoardId] = useState(null)
   const [taskRequired, setTaskRequired] = useState(false)
@@ -49,35 +53,44 @@ function App() {
   }
 
   return (
-    <div className='container'>
-      <div className='wrapper'>
-        <Header createModeCallback={createModeCallback} />
+    <BrowserRouter>
+      <div className='container'>
+        <div className='wrapper'>
+          <Header createModeCallback={createModeCallback} />
 
-        <main className="content">
-          <CreateTaskForm
-            createMode={createMode}
-            createModeCallback={createModeCallback}
-            updateBoardsCallBack={updateBoardsCallBack}
-            currentBoardId={currentBoardId}
-            taskRequired={taskRequired} />
-          <TaskContext.Provider value={{ addTaskCallback }}>
-            <Boards
-              boards={boards}
-              setBoards={setBoards} />
-          </TaskContext.Provider>
-          {(boards.length === 0 && !createMode) && <div className='empty' onClick={createModeCallback}>
-            <span>Empty</span>
-            <AddIcon />
-          </div>}
-        </main>
+          <main className="content">
+            <Routes>
+              <Route path='/' element={
+                <div>
+                  <CreateTaskForm
+                    createMode={createMode}
+                    createModeCallback={createModeCallback}
+                    updateBoardsCallBack={updateBoardsCallBack}
+                    currentBoardId={currentBoardId}
+                    taskRequired={taskRequired} />
+                  <TaskContext.Provider value={{ addTaskCallback }}>
+                    <Boards
+                      boards={boards}
+                      setBoards={setBoards} />
+                  </TaskContext.Provider>
+                  {(boards.length === 0 && !createMode) && <div className='empty' onClick={createModeCallback}>
+                    <span>{t("empty")}</span>
+                    <AddIcon />
+                  </div>}
+                </div>} />
+              <Route path='/info' element={<InfoPage />} />
+            </Routes>
+          </main>
 
-        <footer className="footer">
-          <p className="footer__text">
-            Made by Ivan Hulak 2023 ©
-          </p>
-        </footer>
+          <footer className="footer">
+            <p className="footer__text">
+              Made by Ivan Hulak 2023 ©
+            </p>
+          </footer>
+        </div>
       </div>
-    </div>
+    </BrowserRouter>
+
   );
 }
 

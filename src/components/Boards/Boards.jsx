@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { TaskContext } from '../../App';
 import './boards.scss';
 import { EditBoardForm } from './EditBoardForm';
+import { EditTaskForm } from './EditTaskForm';
 import { MoreToolsMenu } from './MoreToolsMenu/MoreToolsMenu';
 
 export const DeleteTasksBoardContext = createContext(null)
@@ -14,7 +15,6 @@ export const Boards = ({ boards, setBoards }) => {
    const [currentItem, setCurrentItem] = useState(null)
    const [editTaskMode, setEditTaskMode] = useState(false)
    const [editBoardMode, setEditBoardMode] = useState(false)
-   const [editTextValue, setEditTextValue] = useState('')
 
    const deleteTaskCallback = (boardId, taskId) => {
       setBoards(boards.map(b => b.id === boardId ? { ...b, items: b.items.filter(task => task.id !== taskId) } : b))
@@ -32,9 +32,9 @@ export const Boards = ({ boards, setBoards }) => {
          ? { ...b, items: b.items.map(item => item.id === taskId ? { ...item, status: status } : item).sort(sortByStatusKey) }
          : b))
    }
-   const editTaskCallback = (boardId, taskId, editText) => {
+   const editTaskCallback = (boardId, taskId, editData) => {
       setBoards(boards.map(b => b.id === boardId
-         ? { ...b, items: b.items.map(item => item.id === taskId ? { ...item, task: editText } : item) }
+         ? { ...b, items: b.items.map(item => item.id === taskId ? { ...item, task: editData.task } : item) }
          : b))
    }
    const editBoardCallback = (boardId, editData) => {
@@ -132,27 +132,13 @@ export const Boards = ({ boards, setBoards }) => {
                                     </svg>
                                  </div>
                                  {(editTaskMode && currentItem === item)
-                                    ? <div className="board-task__edit">
-                                       <input
-                                          autoFocus={true}
-                                          type='text'
-                                          className='board-task__edit-input'
-                                          value={editTextValue}
-                                          onChange={(e) => setEditTextValue(e.target.value)}
+                                    ? <EditTaskForm
+                                          boardId={board.id}
+                                          item={item}
+                                          setEditTaskMode={setEditTaskMode}
+                                          setCurrentItem={setCurrentItem}
+                                          editTaskCallback={editTaskCallback}
                                        />
-                                       <div className='board-task__edit-buttons'>
-                                          <button className='board-task__edit-button' onClick={() => {
-                                             editTaskCallback(board.id, item.id, editTextValue)
-                                             setEditTaskMode(false)
-                                             setCurrentItem(null)
-                                          }}>{t("save")}</button>
-                                          <button className='board-task__edit-button' onClick={() => {
-                                             setEditTaskMode(false)
-                                             setCurrentItem(null)
-                                          }}>{t("discard")}</button>
-                                       </div>
-
-                                    </div>
                                     : <div className="board-task__text">{item.task}</div>}
                                  <ul className="board-task__buttons buttons-task">
                                     <li className='buttons-task__button' onClick={() => deleteTaskCallback(board.id, item.id)}>

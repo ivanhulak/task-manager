@@ -20,7 +20,7 @@ i18n
       // disable in production
       debug: true,
       // can have multiple namespaces in case you want to devide a huge translation into smaller pieces 
-      ns: ["common", "form"],
+      ns: ["common", "form", "info"],
       interpolation: {
          escapeValue: false,
          formatSeparator: ","
