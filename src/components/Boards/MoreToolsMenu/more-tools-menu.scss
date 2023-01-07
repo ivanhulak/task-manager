@@ -1,8 +1,8 @@
 .more-tools {
    position: absolute;
-   top: 0px;
-   right: -30px;
-   width: 60px;
+   top: -12px;
+   right: -10px;
+   width: 28px;
 
    &__menu {
       svg {
@@ -19,14 +19,18 @@
       &.active {
          opacity: 1;
          visibility: visible;
-         transform: translateX(-70px);
+         transform: translate(25%, 75%);
+         background-color: #F2F2F2;
+         border: 2px solid #8472F3;
+         border-radius: 16px;
+         padding: 5px 10px;
          transition: all 0.3s ease;
       }
 
       &.inactive {
          opacity: 0;
          visibility: hidden;
-         transform: translateX(-30px);
+         transform: translateX(25%);
          transition: all 0.3s ease;
       }
    }
@@ -62,12 +66,8 @@
             height: 20px;
          }
       }
-      &__dropdown-menu {
-         &.active {
-            transform: translateX(-65px);
-         }
-      }
    }
+
    .menu-dropdown {
       &__list {
          height: 23px;
@@ -76,13 +76,23 @@
 }
 
 @media (max-width: 700px) {
+   .more-tools {
+      &__dropdown-menu {
+         &.active {
+            transform: translate(25%, 55%);
+         }
+      }
+   }
+
    .menu-dropdown {
       &__item {
          width: 24px;
+
          svg {
             height: 20px;
             width: 20px;
          }
+
          &:hover svg {
             height: 24px;
             width: 24px;

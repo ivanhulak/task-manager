@@ -9,7 +9,7 @@ export const DeleteTasksBoardContext = createContext(null)
 
 export const Boards = ({ boards, setBoards }) => {
    const { t } = useTranslation(['common']);
-   const { addTaskCallback} = useContext(TaskContext)
+   const { addTaskCallback } = useContext(TaskContext)
    const [currentBoard, setCurrentBoard] = useState(null)
    const [currentItem, setCurrentItem] = useState(null)
    const [editTaskMode, setEditTaskMode] = useState(false)
@@ -23,8 +23,13 @@ export const Boards = ({ boards, setBoards }) => {
       setBoards(boards.filter(b => b.id !== boardId))
    }
    const setTaskStatus = (status, boardId, taskId) => {
+      function sortByStatusKey( item1, item2 ){
+         if (item1.status > item2.status) return -1;
+         if (item1.status < item2.status) return 1;
+         return 0;
+      }
       setBoards(boards.map(b => b.id === boardId
-         ? { ...b, items: b.items.map(item => item.id === taskId ? { ...item, status: status } : item) }
+         ? { ...b, items: b.items.map(item => item.id === taskId ? { ...item, status: status } : item).sort(sortByStatusKey) }
          : b))
    }
    const editTaskCallback = (boardId, taskId, editText) => {
@@ -33,8 +38,8 @@ export const Boards = ({ boards, setBoards }) => {
          : b))
    }
    const editBoardCallback = (boardId, editData) => {
-      const {title, colorLabel} = editData
-      setBoards(boards.map(b => b.id === boardId ? { ...b, title: title, colorLabel: colorLabel} : b))
+      const { title, colorLabel } = editData
+      setBoards(boards.map(b => b.id === boardId ? { ...b, title: title, colorLabel: colorLabel } : b))
    }
    const startEditTask = (task) => {
       setEditTaskMode(true)
@@ -96,20 +101,16 @@ export const Boards = ({ boards, setBoards }) => {
                      <div className="board-inner">
                         <div className="board-inner__header">
                            {(editBoardMode && currentBoard === board)
-                              ? <EditBoardForm 
-                                    editBoardCallback={editBoardCallback}
-                                    board={board}
-                                    setEditBoardMode={setEditBoardMode}
-                                    setCurrentBoard={setCurrentBoard}
-                                 />
+                              ? <EditBoardForm
+                                 editBoardCallback={editBoardCallback}
+                                 board={board}
+                                 setEditBoardMode={setEditBoardMode}
+                                 setCurrentBoard={setCurrentBoard}
+                              />
                               : <>
                                  <div className="board-inner__title">{board.title}</div>
-                                 <div style={{
-                                    backgroundColor: `${board.colorLabel}`,
-                                    width: '85px',
-                                    height: '15px',
-                                    borderRadius: '24px'
-                                 }}>
+                                 <div style={{ position: 'relative' }}>
+                                    <MoreToolsMenu board={board} boardId={board.id} startEditBoard={startEditBoard} />
                                  </div>
                               </>}
                         </div>
@@ -174,8 +175,12 @@ export const Boards = ({ boards, setBoards }) => {
                               </svg>
                               <span>{t("add_task")}</span>
                            </button>
-                           <div style={{ position: 'relative' }}>
-                              <MoreToolsMenu board={board} boardId={board.id} startEditBoard={startEditBoard} />
+                           <div style={{
+                              backgroundColor: `${board.colorLabel}`,
+                              width: '85px',
+                              height: '15px',
+                              borderRadius: '24px'
+                           }}>
                            </div>
                         </div>
                      </div>
