@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/task-manager/static/css/main.28a82f64.css",
-    "main.js": "/task-manager/static/js/main.eceda025.js",
+    "main.css": "/task-manager/static/css/main.f594db1b.css",
+    "main.js": "/task-manager/static/js/main.fc94b539.js",
     "static/media/ivan.jpg": "/task-manager/static/media/ivan.add42a7475c602b4b3f0.jpg",
     "static/media/do.svg": "/task-manager/static/media/do.d2287a1e1eee0805fc27.svg",
     "static/media/rs.svg": "/task-manager/static/media/rs.dc155455e86e12200cb5.svg",
@@ -270,11 +270,11 @@
     "static/media/de.svg": "/task-manager/static/media/de.6435bf24d148ca7248e7.svg",
     "static/media/bd.svg": "/task-manager/static/media/bd.0ad8c443ef4d47ea0497.svg",
     "static/media/id.svg": "/task-manager/static/media/id.f624e2c8444a7794b357.svg",
-    "main.28a82f64.css.map": "/task-manager/static/css/main.28a82f64.css.map",
-    "main.eceda025.js.map": "/task-manager/static/js/main.eceda025.js.map"
+    "main.f594db1b.css.map": "/task-manager/static/css/main.f594db1b.css.map",
+    "main.fc94b539.js.map": "/task-manager/static/js/main.fc94b539.js.map"
   },
   "entrypoints": [
-    "static/css/main.28a82f64.css",
-    "static/js/main.eceda025.js"
+    "static/css/main.f594db1b.css",
+    "static/js/main.fc94b539.js"
   ]
 }
