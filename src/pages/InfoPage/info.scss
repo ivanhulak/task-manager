@@ -1,0 +1,80 @@
+.info {
+   padding: 50px 15px;
+   color: #000;
+}
+.info-page {
+   padding: 30px 20px;
+   background-color: #CABAD4;
+   border: 3px solid #8472F3;
+   border-radius: 50px;
+   &__title{
+      font-size: 36px;
+      letter-spacing: 0.015em;
+      text-align: center;
+      margin-bottom: 30px;
+      font-weight: 700;
+   }
+   &__paragraph{
+      transition: all 0.5s ease;
+      border-radius: 14px;
+      padding: 15px;
+      border: 2px dashed transparent;
+      font-size: 24px;
+      font-weight: 500;
+      p{
+         text-indent: 40px;
+         &:not(:last-child){
+            margin-bottom: 10px;
+         }
+      }
+      
+      &:not(:last-child){
+         margin-bottom: 20px;
+      }
+      span{
+         transition: all 0.5s ease;
+         display: inline-block;
+         margin-bottom: 5px;
+      }
+      &:hover{
+         cursor: pointer;
+         border: 2px dashed #D5CCDB;
+         box-shadow: 0px 0px 15px 15px rgba(71, 68, 73, 0.46);
+      }
+      &:hover span{
+         color: #3C0061;
+      }
+   }
+}
+.bold{
+   font-weight: 700;
+}
+
+@media (max-width: 1260px){
+   .info{
+      padding-top: calc(20px + (50 - 20) * ((100vw - 320px) / (1260 - 320)));
+      padding-bottom: calc(20px + (50 - 20) * ((100vw - 320px) / (1260 - 320)));
+   }
+   .info-page{
+      padding-top: calc(20px + (30 - 20) * ((100vw - 320px) / (1260 - 320)));
+      padding-bottom: calc(20px + (30 - 20) * ((100vw - 320px) / (1260 - 320)));
+      padding-right: calc(15px + (20 - 15) * ((100vw - 320px) / (1260 - 320)));
+      padding-left: calc(15px + (20 - 15) * ((100vw - 320px) / (1260 - 320)));
+
+      &__title{
+         font-size: calc(26px + (36 - 26) * ((100vw - 320px) / (1260 - 320)));
+         margin-bottom: calc(10px + (30 - 10) * ((100vw - 320px) / (1260 - 320)));
+      }
+      &__paragraph{
+         padding: calc(0px + (15 - 0) * ((100vw - 320px) / (1260 - 320)));
+         font-size: calc(16px + (24 - 16) * ((100vw - 320px) / (1260 - 320)));
+         p{
+            text-indent: calc(20px + (40 - 20) * ((100vw - 320px) / (1260 - 320)));
+         }
+         &:not(:last-child){
+            margin-bottom: calc(10px + (20 - 10) * ((100vw - 320px) / (1260 - 320)));;
+         }
+      }
+   }
+   
+}

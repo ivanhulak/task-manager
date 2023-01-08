@@ -5,7 +5,7 @@ import './create-form.scss';
 import { TrashIcon } from '../common/Icons/TrashIcon';
 import { useTranslation } from 'react-i18next';
 
-export const CreateTaskForm = ({ createMode, createModeCallback, updateBoardsCallBack, currentBoardId, taskRequired }) => {
+export const CreateTaskForm = ({ currentLabel, createMode, createModeCallback, updateBoardsCallBack, currentBoardId, taskRequired }) => {
    const { t } = useTranslation(['form']);
    const conditionalValidation = taskRequired
       ? {
@@ -17,9 +17,9 @@ export const CreateTaskForm = ({ createMode, createModeCallback, updateBoardsCal
       }
       : {
          task: Yup.string()
-         .typeError(`${t("validation.string")}`)
-         .min(2, `${t("validation.short")}`)
-         .max(250, `${t("validation.long")}`),
+            .typeError(`${t("validation.string")}`)
+            .min(2, `${t("validation.short")}`)
+            .max(250, `${t("validation.long")}`),
          board: Yup.string()
             .required(`${t("validation.required")}`)
             .typeError(`${t("validation.string")}`)
@@ -35,7 +35,7 @@ export const CreateTaskForm = ({ createMode, createModeCallback, updateBoardsCal
       const formData = {
          id: currentBoardId ? currentBoardId : uuidv4(),
          title: values.board,
-         colorLabel: values.colorLabel,
+         colorLabel: !!currentLabel ? currentLabel : values.colorLabel,
          items: values.task ? [{ id: uuidv4(), task: values.task, status: 'uncompleted' }] : []
       }
       updateBoardsCallBack(formData)
@@ -75,8 +75,8 @@ export const CreateTaskForm = ({ createMode, createModeCallback, updateBoardsCal
                   {taskRequired || <div className='form-block__select'>
                      <p className="form-block__label">{t("create_color")}</p>
                      <Field as="select" name="colorLabel" className='select__color color-select form-block__input'>
-                        <option value="#FFE600" className='color-select__option'>{t("colors.yellow")}</option>
                         <option value="#FF00E5" className='color-select__option'>{t("colors.pink")}</option>
+                        <option value="#FFE600" className='color-select__option'>{t("colors.yellow")}</option>
                         <option value="#02D74A" className='color-select__option'>{t("colors.green")}</option>
                         <option value="#FF0000" className='color-select__option'>{t("colors.red")}</option>
                         <option value="#FF6B00" className='color-select__option'>{t("colors.orange")}</option>
@@ -101,6 +101,3 @@ export const CreateTaskForm = ({ createMode, createModeCallback, updateBoardsCal
       </div>
    );
 };
-
-
-// className={errors.postText ? 'createPost-textarea textarea-error' : 'createPost-textarea'}

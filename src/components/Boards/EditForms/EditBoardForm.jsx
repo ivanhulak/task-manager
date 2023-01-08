@@ -1,7 +1,7 @@
 import { Formik, Field, Form } from 'formik';
 import { useTranslation } from 'react-i18next';
 import * as Yup from 'yup';
-import './boards.scss';
+import './edit-forms.scss';
 
 
 export const EditBoardForm = ({ board, editBoardCallback, setEditBoardMode, setCurrentBoard }) => {

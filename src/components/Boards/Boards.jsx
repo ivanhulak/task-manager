@@ -2,9 +2,10 @@ import { createContext, useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { TaskContext } from '../../App';
 import './boards.scss';
-import { EditBoardForm } from './EditBoardForm';
-import { EditTaskForm } from './EditTaskForm';
 import { MoreToolsMenu } from './MoreToolsMenu/MoreToolsMenu';
+import {EditBoardForm} from './EditForms/EditBoardForm';
+import {EditTaskForm} from './EditForms/EditTaskForm';
+import {StatusIcon} from '../common/Icons/StatusIcon';
 
 export const DeleteTasksBoardContext = createContext(null)
 
@@ -23,7 +24,7 @@ export const Boards = ({ boards, setBoards }) => {
       setBoards(boards.filter(b => b.id !== boardId))
    }
    const setTaskStatus = (status, boardId, taskId) => {
-      function sortByStatusKey( item1, item2 ){
+      function sortByStatusKey(item1, item2) {
          if (item1.status > item2.status) return -1;
          if (item1.status < item2.status) return 1;
          return 0;
@@ -126,19 +127,20 @@ export const Boards = ({ boards, setBoards }) => {
                                  onDragOver={(e) => onDragOverHandler(e)}
                                  onDrop={(e) => onDropHandler(e, board, item)}
                               >
-                                 <div className="board-task__status" onClick={() => setTaskStatus(item.status === 'completed' ? 'uncompleted' : 'completed', board.id, item.id)}>
-                                    <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                       <path d="M21.8751 13.125L15.9666 21.875L13.1251 18.5468M13.1251 32.0833H21.8751C27.513 32.0833 32.0834 27.5129 32.0834 21.875V13.125C32.0834 7.4871 27.513 2.91667 21.8751 2.91667H13.1251C7.48717 2.91667 2.91675 7.4871 2.91675 13.125V21.875C2.91675 27.5129 7.48718 32.0833 13.1251 32.0833Z" stroke={item.status === 'uncompleted' ? "#333333" : "#219653"} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                                    </svg>
+                                 <div
+                                    className="board-task__status"
+                                    onClick={() => setTaskStatus(item.status === 'completed' ? 'uncompleted' : 'completed', board.id, item.id)}
+                                 >
+                                    <StatusIcon itemStatus={item.status}/>
                                  </div>
                                  {(editTaskMode && currentItem === item)
                                     ? <EditTaskForm
-                                          boardId={board.id}
-                                          item={item}
-                                          setEditTaskMode={setEditTaskMode}
-                                          setCurrentItem={setCurrentItem}
-                                          editTaskCallback={editTaskCallback}
-                                       />
+                                       boardId={board.id}
+                                       item={item}
+                                       setEditTaskMode={setEditTaskMode}
+                                       setCurrentItem={setCurrentItem}
+                                       editTaskCallback={editTaskCallback}
+                                    />
                                     : <div className="board-task__text">{item.task}</div>}
                                  <ul className="board-task__buttons buttons-task">
                                     <li className='buttons-task__button' onClick={() => deleteTaskCallback(board.id, item.id)}>
@@ -155,7 +157,7 @@ export const Boards = ({ boards, setBoards }) => {
                               </div>) : ''}
                         </div>
                         <div className="board-inner__footer">
-                           <button className="board-inner__add-button" onClick={() => addTaskCallback(board.id)}>
+                           <button className="board-inner__add-button" onClick={() => addTaskCallback(board.id, board.colorLabel)}>
                               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                  <path d="M12.0001 4.8L12 19.2M19.2001 12L4.80005 12" stroke="#CABAD4" strokeWidth="4" strokeLinecap="round" />
                               </svg>
