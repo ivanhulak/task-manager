@@ -102,7 +102,7 @@ export const Header = ({ createModeCallback }) => {
           <li className="menu-header__item" title={t("titles.info")}>
             <NavLink to='/info'><InfoIcon /></NavLink>
           </li>
-          <li className="menu-header__item">
+          <li className="menu-header__item" onClick={() => alert(`${t("not_available")}`)}>
             <SettingsIcon />
           </li>
         </ul>
