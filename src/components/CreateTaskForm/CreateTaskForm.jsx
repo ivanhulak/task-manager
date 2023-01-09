@@ -5,7 +5,7 @@ import './create-form.scss';
 import { TrashIcon } from '../common/Icons/TrashIcon';
 import { useTranslation } from 'react-i18next';
 
-export const CreateTaskForm = ({ currentLabel, createMode, createModeCallback, updateBoardsCallBack, currentBoardId, taskRequired }) => {
+export const CreateTaskForm = ({ currentLabel, setCurrentLabel, createMode, createModeCallback, updateBoardsCallBack, currentBoardId, taskRequired }) => {
    const { t } = useTranslation(['form']);
    const conditionalValidation = taskRequired
       ? {
@@ -40,6 +40,7 @@ export const CreateTaskForm = ({ currentLabel, createMode, createModeCallback, u
       }
       updateBoardsCallBack(formData)
       resetForm('')
+      setCurrentLabel('')
       createModeCallback(false)
       setSubmitting(false);
    }
@@ -75,8 +76,8 @@ export const CreateTaskForm = ({ currentLabel, createMode, createModeCallback, u
                   {taskRequired || <div className='form-block__select'>
                      <p className="form-block__label">{t("create_color")}</p>
                      <Field as="select" name="colorLabel" className='select__color color-select form-block__input'>
-                        <option value="#FF00E5" className='color-select__option'>{t("colors.pink")}</option>
                         <option value="#FFE600" className='color-select__option'>{t("colors.yellow")}</option>
+                        <option value="#FF00E5" className='color-select__option'>{t("colors.pink")}</option>
                         <option value="#02D74A" className='color-select__option'>{t("colors.green")}</option>
                         <option value="#FF0000" className='color-select__option'>{t("colors.red")}</option>
                         <option value="#FF6B00" className='color-select__option'>{t("colors.orange")}</option>

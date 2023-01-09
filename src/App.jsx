@@ -65,6 +65,7 @@ function App() {
                 <div>
                   <CreateTaskForm
                     currentLabel={currentLabel}
+                    setCurrentLabel={setCurrentLabel}
                     createMode={createMode}
                     createModeCallback={createModeCallback}
                     updateBoardsCallBack={updateBoardsCallBack}
