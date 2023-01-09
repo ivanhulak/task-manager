@@ -1,3 +1,15 @@
 {
-   "info_title": "Information about Task Manager App"
+   "info_title": "Information about Task Manager App",
+   "p1_title": "Task Manage",
+   "info_p1": " - app to make your life easier. It is similar to the Trello or Notes application, but with limited functionality.",
+   "p2_title": "Start",
+   "info_p2_1": "To start using the application, click on the plus sign in the top menu. The form for adding a new whiteboard with notes will open. You can create a blank board without notes, or you can immediately add a note and choose the desired color (label) to make it easier to navigate. For example, green color for notes related to work, and red color - for personal affairs.",
+   "info_p2_2": "Also, as soon as you open the application, you will see the inscription “Empty“ in the middle of the screen. If you click on this inscription, a form for creating boards and notes will also appear.",
+   "info_p2_3": "There is also a globe icon in the main menu, clicking on which will open a menu for choosing the language you like. There are also “Information“ icons and a “Settings“ icon. By clicking on the “Information“ icon, you can find out why and how exactly this application works, and by clicking on the “Settings“ icon, the functionality has not yet been added. Then it will be, so to speak.",
+   "p3_title": "Functional",
+   "info_p3":"In this application, you can create boards with tasks (notes) that you need to do. You can delete and edit both the note (pencil and trash icon to the right of the note) and the board itself (three dots icon on the top right of each board) When editing, you will see two buttons: “Save” and “Discard“, so after you have added text when you click the “Save“ button, the changes will be saved, and when you click “Discard“ - you will end the editing mode.",
+   "p4_title": "”Status Completed - ”Uncompleted”",
+   "info_p4": "Each note has a checkmark icon on the left, when you click on it, it changes color. At first, each note is black, but when clicked, it turns green, i.e. done, and automatically moves to the bottom of the list.",
+   "p5_title": "Drag and drop notes",
+   "info_p5": "You can drag notes from one board to another and change the order of notes in the board. Just pinch the selected note with the mouse and drag it to the board where you want to move it. To swap notes, do the same, only hover over the bottom of the selected note. (The system will highlight the bottom of the note with a shadow). This functionality of dragging notes works only on PC, the functionality is not yet finished on mobile devices."
 }

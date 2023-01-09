@@ -10,5 +10,6 @@
    "save": "Save",
    "discard": "Discard",
    "clear": "Crear",
-   "empty": "Empty"
+   "empty": "Empty",
+   "not_available": "Not available yet"
 }
