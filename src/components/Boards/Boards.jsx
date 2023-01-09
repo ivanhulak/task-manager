@@ -6,6 +6,7 @@ import { MoreToolsMenu } from './MoreToolsMenu/MoreToolsMenu';
 import {EditBoardForm} from './EditForms/EditBoardForm';
 import {EditTaskForm} from './EditForms/EditTaskForm';
 import {StatusIcon} from '../common/Icons/StatusIcon';
+import {sortItemsByStatus} from '../common/utils/sortItemsByStatus';
 
 export const DeleteTasksBoardContext = createContext(null)
 
@@ -24,13 +25,9 @@ export const Boards = ({ boards, setBoards }) => {
       setBoards(boards.filter(b => b.id !== boardId))
    }
    const setTaskStatus = (status, boardId, taskId) => {
-      function sortByStatusKey(item1, item2) {
-         if (item1.status > item2.status) return -1;
-         if (item1.status < item2.status) return 1;
-         return 0;
-      }
+      const sortedFn = sortItemsByStatus
       setBoards(boards.map(b => b.id === boardId
-         ? { ...b, items: b.items.map(item => item.id === taskId ? { ...item, status: status } : item).sort(sortByStatusKey) }
+         ? { ...b, items: b.items.map(item => item.id === taskId ? { ...item, status: status } : item).sort(sortedFn) }
          : b))
    }
    const editTaskCallback = (boardId, taskId, editData) => {

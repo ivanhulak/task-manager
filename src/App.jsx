@@ -7,6 +7,7 @@ import { CreateTaskForm } from './components/CreateTaskForm/CreateTaskForm';
 import { Header } from './components/Header/Header';
 import './index.scss';
 import { InfoPage } from './pages/InfoPage/InfoPage';
+import {sortItemsByStatus} from './components/common/utils/sortItemsByStatus';
 
 export const TaskContext = createContext(null);
 
@@ -31,6 +32,9 @@ function App() {
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   }, [createMode])
+  useEffect(() => {
+   setBoards(boards.map(b => b.items.length >= 1 ? {...b, items: b.items.sort(sortItemsByStatus) } : b))
+  }, [boards])
 
   const createModeCallback = () => {
     setCreateMode(!createMode)
